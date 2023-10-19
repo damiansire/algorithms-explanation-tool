@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { BsArrowUp } from "react-icons/bs";
 
 const gridContainerStyle = {
   display: "grid",
   gap: "10px", // Espacio entre los elementos del grid
   // Otros estilos personalizados para tu grid
+};
+
+const IconComponent = ({ iconName }) => {
+  // Usa una declaración switch o if para determinar qué icono renderizar
+  switch (iconName) {
+    case "upArrow":
+      return <BsArrowUp />;
+    default:
+      return null;
+  }
 };
 
 function ArrayVisualized() {
@@ -48,7 +59,9 @@ function ArrayVisualized() {
         style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
       >
         {customElementsPositions.map((element) => (
-          <div> {element?.icon}</div>
+          <div>
+            <IconComponent iconName={element?.icon}></IconComponent>
+          </div>
         ))}
       </div>
       <div
