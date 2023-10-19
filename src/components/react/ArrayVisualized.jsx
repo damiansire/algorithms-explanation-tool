@@ -14,14 +14,22 @@ function ArrayVisualized() {
     setElements(generateRandomArray(10));
   }, []);
 
+  const displayElements = getArrayFormat(elements);
+  const gridColumnSize = `repeat(${displayElements.length}, 1fr)`;
+
   useEffect(() => {
     setCustomElements(() => {
-      new Array(elements.length);
+      return [
+        { icon: "upArrow", index: 1, value: "q" },
+        { icon: "upArrow", index: 11, value: "q" },
+      ];
     });
   }, [elements]);
 
-  const displayElements = getArrayFormat(elements);
-  const gridColumnSize = `repeat(${displayElements.length}, 1fr)`;
+  const customElementsPositions = new Array(displayElements.length).fill(null);
+  for (const customElement of customElements) {
+    customElementsPositions[customElement.index] = customElement;
+  }
 
   return (
     <div>
@@ -39,14 +47,18 @@ function ArrayVisualized() {
         className="grid-container"
         style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
       >
-        {customElements?.map((element) => (element ? <div>^</div> : null))}
+        {customElementsPositions.map((element) => (
+          <div> {element?.icon}</div>
+        ))}
       </div>
       <div
         id="third-row"
         className="grid-container"
         style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
       >
-        q
+        {customElementsPositions.map((element) => (
+          <div> {element?.value}</div>
+        ))}
       </div>
     </div>
   );
