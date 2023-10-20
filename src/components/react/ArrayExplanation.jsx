@@ -20,19 +20,19 @@ const ArrayExplanation = () => {
     setCustomElements(() => {
       return [
         { icon: iconsTypes.upArrow, index: 5, value: "p" },
-        { icon: iconsTypes.upArrow, index: 15, value: "q" },
+        { icon: iconsTypes.upArrow, index: 5, value: "q" },
         { icon: iconsTypes.upArrow, index: 29, value: "r" },
       ];
     });
   }, [elements]);
 
-  const updateCustomElementsValues = (indexToUpdate, updatedValues) => {
+  const updateCustomElementsValues = (element, updatedValues) => {
     setCustomElements((prevElements) => {
-      return prevElements.map((element) => {
-        if (element.index === indexToUpdate) {
+      return prevElements.map((currentElement) => {
+        if (currentElement === element) {
           return { ...element, ...updatedValues };
         } else {
-          return element;
+          return currentElement;
         }
       });
     });

@@ -6,7 +6,11 @@ function ArrayVisualized({ elements, customElements }) {
 
   const customElementsPositions = new Array(displayElements.length).fill(null);
   for (const customElement of customElements) {
-    customElementsPositions[customElement.index] = customElement;
+    if (customElementsPositions[customElement.index]) {
+      customElementsPositions[customElement.index].push(customElement);
+    } else {
+      customElementsPositions[customElement.index] = [customElement];
+    }
   }
 
   return (
@@ -17,8 +21,14 @@ function ArrayVisualized({ elements, customElements }) {
           <div key={index} className="flex-grow">
             {element}
           </div>
-          <div class="flex justify-center">{customElementsPositions[index]?.icon}</div>
-          <div>{customElementsPositions[index]?.value}</div>
+          <div class="flex justify-center">
+            {customElementsPositions[index]?.map((element) => element.icon)}
+          </div>
+          <div className="flex justify-around">
+            {customElementsPositions[index]?.map((element) => (
+              <span>{element.value}</span>
+            ))}
+          </div>
         </div>
       ))}
     </div>

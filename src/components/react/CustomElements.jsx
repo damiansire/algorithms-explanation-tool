@@ -2,9 +2,9 @@ import React from "react";
 import Counter from "./Counter";
 
 const CustomElements = ({ customElements, updateValues }) => {
-  const setNewValue = (currentIndex, newValue) => {
+  const setNewValue = (element, newValue) => {
     const newIndex = newValue * 2 + 1;
-    updateValues(currentIndex, { index: newIndex });
+    updateValues(element, { index: newIndex });
   };
   return (
     <div>
@@ -26,7 +26,7 @@ const CustomElements = ({ customElements, updateValues }) => {
                   <Counter
                     count={(element.index - 1) / 2}
                     setNewValue={(newValue) => {
-                      setNewValue(element.index, newValue);
+                      setNewValue(element, newValue);
                     }}
                   ></Counter>
                 </td>
