@@ -3,7 +3,7 @@ import ArrayVisualized from "./ArrayVisualized";
 import FormControl from "./FormControl";
 import CustomElements from "./CustomElements";
 import { BsArrowUp } from "react-icons/bs";
-
+import LetterOptions from "./LetterOptions";
 const iconsTypes = {
   upArrow: <BsArrowUp />,
 };
@@ -32,18 +32,25 @@ const ArrayExplanation = () => {
   };
 
   return (
-    <div>
-      <ArrayVisualized
-        elements={elements}
-        customElements={customElements}
-        client:load
-      ></ArrayVisualized>
-      <FormControl
-        onAddData={handleAddData}
-        customElements={customElements}
-      ></FormControl>
-      <CustomElements customElements={customElements}></CustomElements>
-    </div>
+    <section className="flex">
+      <div className="flex-grow">
+        <ArrayVisualized
+          elements={elements}
+          customElements={customElements}
+          client:load
+        ></ArrayVisualized>
+        <div className="flex">
+          <FormControl
+            onAddData={handleAddData}
+            customElements={customElements}
+          ></FormControl>
+          <CustomElements customElements={customElements}></CustomElements>
+        </div>
+      </div>
+      <div>
+        <LetterOptions></LetterOptions>
+      </div>
+    </section>
   );
 };
 
