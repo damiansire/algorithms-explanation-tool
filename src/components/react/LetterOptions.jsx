@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const LetterOptions = () => {
   // Define the options and an array to store selected values
-  const options = ["B", "C", "D"];
+  const options = ["p", "q", "r"];
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionChange = (option) => {

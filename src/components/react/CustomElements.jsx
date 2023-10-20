@@ -1,25 +1,26 @@
 import React from "react";
+import Counter from "./Counter";
 
 const CustomElements = ({ customElements }) => {
   return (
     <div>
-      <table>
+      <table class="table-auto border-collapse w-full">
         <thead>
-          <tr>
-            <th>Icon</th>
-            <th>Value</th>
-            <th>Index</th>
-            <th>Array Index</th>
+          <tr class="rounded-lg text-sm font-medium text-gray-700 text-left">
+            <th class="px-4 py-2 bg-gray-200">Icon</th>
+            <th class="px-4 py-2 bg-gray-200">Value</th>
+            <th class="px-4 py-2 bg-gray-200">Index</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-sm font-normal text-gray-700">
           {customElements.map((element) => {
             return (
-              <tr>
-                <td>{element.icon}</td>
-                <td>{element.value}</td>
-                <td>{element.index}</td>
-                <td>{(element.index - 1) / 2}</td>
+              <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
+                <td class="px-4 py-4">{element.icon}</td>
+                <td class="px-4 py-4">{element.value}</td>
+                <td class="px-4 py-4">
+                  <Counter count={(element.index - 1) / 2}></Counter>
+                </td>
               </tr>
             );
           })}
