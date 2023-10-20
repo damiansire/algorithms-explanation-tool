@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-const gridContainerStyle = {
-  display: "grid",
-  gap: "10px",
-  textAlign: "center",
-};
-
 function ArrayVisualized({ elements, customElements }) {
   const displayElements = getArrayFormat(elements);
   const gridColumnSize = `repeat(${displayElements.length}, 1fr)`;
@@ -16,31 +10,16 @@ function ArrayVisualized({ elements, customElements }) {
   }
 
   return (
-    <div>
-      <div
-        id="first-row"
-        style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
-      >
-        {displayElements.map((element, index) => (
-          <div key={index}>{element}</div>
-        ))}
-      </div>
-      <div
-        id="second-row"
-        style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
-      >
-        {customElementsPositions.map((element) => (
-          <div>{element?.icon}</div>
-        ))}
-      </div>
-      <div
-        id="third-row"
-        style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
-      >
-        {customElementsPositions.map((element) => (
-          <div> {element?.value}</div>
-        ))}
-      </div>
+    <div className="flex space-around justify-evenly">
+      {displayElements.map((element, index) => (
+        <div key={index} className="text-center">
+          <div key={index} className="flex-grow">
+            {element}
+          </div>
+          <div class="flex justify-center">{customElementsPositions[index]?.icon}</div>
+          <div>{customElementsPositions[index]?.value}</div>
+        </div>
+      ))}
     </div>
   );
 }
