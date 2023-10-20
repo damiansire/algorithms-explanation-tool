@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Counter from "./Counter";
 const FormControl = ({ onAddData }) => {
   const [indice, setIndice] = useState("");
   const [punto, setPunto] = useState("");
@@ -28,13 +28,27 @@ const FormControl = ({ onAddData }) => {
   return (
     <div>
       <form>
-        <div>
-          <label>Indice</label>
-          <input value={indice} onChange={(e) => setIndice(e.target.value)}></input>
+        <div class="flex flex-col">
+          <label for="text" class="mb-2 font-semibold">
+            Indice
+          </label>
+          <input
+            type="number"
+            onChange={(e) => setIndice(e.target.value)}
+            id="text"
+            class="w-full max-w-lg rounded-lg border border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
+          />
         </div>
-        <div>
-          <label>Punto</label>
-          <input value={punto} onChange={(e) => setPunto(e.target.value)}></input>
+        <div class="flex flex-col">
+          <label for="text" class="mb-2 font-semibold">
+            Punto
+          </label>
+          <input
+            type="text"
+            onChange={(e) => setPunto(e.target.value)}
+            id="text"
+            class="w-full max-w-lg rounded-lg border border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
+          />
         </div>
         <button onClick={handleAddData}>Añadir</button>
       </form>
