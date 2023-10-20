@@ -26,6 +26,18 @@ const ArrayExplanation = () => {
     });
   }, [elements]);
 
+  const updateCustomElementsValues = (indexToUpdate, updatedValues) => {
+    setCustomElements((prevElements) => {
+      return prevElements.map((element) => {
+        if (element.index === indexToUpdate) {
+          return { ...element, ...updatedValues };
+        } else {
+          return element;
+        }
+      });
+    });
+  };
+
   const handleAddData = (newData) => {
     // Realiza alguna acción con los datos, por ejemplo, agrega los nuevos datos al array de elementos
     setElements([...elements, newData]);
@@ -44,7 +56,10 @@ const ArrayExplanation = () => {
             onAddData={handleAddData}
             customElements={customElements}
           ></FormControl>
-          <CustomElements customElements={customElements}></CustomElements>
+          <CustomElements
+            customElements={customElements}
+            updateValues={updateCustomElementsValues}
+          ></CustomElements>
         </div>
       </div>
       <div>

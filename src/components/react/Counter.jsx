@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-const Counter = ({ count }) => {
+const Counter = ({ count, setNewValue }) => {
   const handleClick = (event) => {
     event.preventDefault();
     const action = event.currentTarget.getAttribute("data-action");
-    setCount((count) => {
-      if (action === "increment") {
-        return count + 1;
-      } else if (action === "decrement") {
-        return count - 1;
-      }
-    });
+    let newCount;
+    if (action === "increment") {
+      newCount = count + 1;
+    } else if (action === "decrement") {
+      newCount = count - 1;
+    }
+    setNewValue(newCount);
   };
   return (
     <div class="custom-number-input h-10 w-32">

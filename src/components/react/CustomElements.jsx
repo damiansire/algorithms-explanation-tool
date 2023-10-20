@@ -1,7 +1,11 @@
 import React from "react";
 import Counter from "./Counter";
 
-const CustomElements = ({ customElements }) => {
+const CustomElements = ({ customElements, updateValues }) => {
+  const setNewValue = (currentIndex, newValue) => {
+    const newIndex = newValue * 2 + 1;
+    updateValues(currentIndex, { index: newIndex });
+  };
   return (
     <div>
       <table class="table-auto border-collapse w-full">
@@ -19,7 +23,12 @@ const CustomElements = ({ customElements }) => {
                 <td class="px-4 py-4">{element.icon}</td>
                 <td class="px-4 py-4">{element.value}</td>
                 <td class="px-4 py-4">
-                  <Counter count={(element.index - 1) / 2}></Counter>
+                  <Counter
+                    count={(element.index - 1) / 2}
+                    setNewValue={(newValue) => {
+                      setNewValue(element.index, newValue);
+                    }}
+                  ></Counter>
                 </td>
               </tr>
             );
