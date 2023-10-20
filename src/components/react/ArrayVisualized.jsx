@@ -3,27 +3,16 @@ import { BsArrowUp } from "react-icons/bs";
 
 const gridContainerStyle = {
   display: "grid",
-  gap: "10px", // Espacio entre los elementos del grid
-  // Otros estilos personalizados para tu grid
+  gap: "10px",
+  textAlign: "center",
 };
 
-const IconComponent = ({ iconName }) => {
-  // Usa una declaración switch o if para determinar qué icono renderizar
-  switch (iconName) {
-    case "upArrow":
-      return <BsArrowUp />;
-    default:
-      return null;
-  }
+const iconsTypes = {
+  upArrow: <BsArrowUp />,
 };
 
-function ArrayVisualized() {
-  const [elements, setElements] = useState([]);
+function ArrayVisualized({ elements }) {
   const [customElements, setCustomElements] = useState([]);
-
-  useEffect(() => {
-    setElements(generateRandomArray(10));
-  }, []);
 
   const displayElements = getArrayFormat(elements);
   const gridColumnSize = `repeat(${displayElements.length}, 1fr)`;
@@ -31,8 +20,8 @@ function ArrayVisualized() {
   useEffect(() => {
     setCustomElements(() => {
       return [
-        { icon: "upArrow", index: 1, value: "q" },
-        { icon: "upArrow", index: 11, value: "q" },
+        { icon: iconsTypes.upArrow, index: 1, value: "q" },
+        { icon: iconsTypes.upArrow, index: 11, value: "q" },
       ];
     });
   }, [elements]);
@@ -59,9 +48,7 @@ function ArrayVisualized() {
         style={{ gridTemplateColumns: gridColumnSize, ...gridContainerStyle }}
       >
         {customElementsPositions.map((element) => (
-          <div>
-            <IconComponent iconName={element?.icon}></IconComponent>
-          </div>
+          <div>{element?.icon}</div>
         ))}
       </div>
       <div
@@ -88,17 +75,6 @@ function getArrayFormat(elements) {
   }
   displayElements.push("]");
   return displayElements;
-}
-
-function generateRandomArray(length) {
-  const array = [];
-
-  for (let i = 0; i < length; i++) {
-    const randomElement = Math.floor(Math.random() * 100); // You can adjust the range and values as needed.
-    array.push(randomElement);
-  }
-
-  return array;
 }
 
 export default ArrayVisualized;
