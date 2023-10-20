@@ -19,8 +19,9 @@ const ArrayExplanation = () => {
   useEffect(() => {
     setCustomElements(() => {
       return [
-        { icon: iconsTypes.upArrow, index: 1, value: "q" },
-        { icon: iconsTypes.upArrow, index: 11, value: "q" },
+        { icon: iconsTypes.upArrow, index: 5, value: "p" },
+        { icon: iconsTypes.upArrow, index: 15, value: "q" },
+        { icon: iconsTypes.upArrow, index: 29, value: "r" },
       ];
     });
   }, [elements]);

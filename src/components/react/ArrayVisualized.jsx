@@ -13,6 +13,7 @@ function ArrayVisualized({ elements, customElements }) {
     <div className="flex space-around justify-evenly">
       {displayElements.map((element, index) => (
         <div key={index} className="text-center">
+          <div className="inline-block">{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div key={index} className="flex-grow">
             {element}
           </div>
