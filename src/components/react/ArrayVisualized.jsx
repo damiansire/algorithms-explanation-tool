@@ -27,10 +27,10 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
               selectedElement === index && "bg-green-500 text-white"
             }`}
             onClick={() => {
-              createPoint(index);
+              handleContextMenu(index);
             }}
             onContextMenu={() => {
-              handleContextMenu(index);
+              createPoint(index);
             }}
           >
             {element}
