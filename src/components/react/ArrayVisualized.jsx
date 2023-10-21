@@ -13,9 +13,8 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
     }
   }
 
-  const handleContextMenu = (index) => {
-    setSelectedElement(index);
-  };
+  const handleContextMenu = (index) =>
+    setSelectedElement(selectedElement === index ? null : index);
 
   return (
     <div className="flex space-around justify-evenly">
