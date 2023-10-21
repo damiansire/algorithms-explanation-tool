@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function ArrayVisualized({ elements, customElements, createPoint }) {
+  const [selectedElement, setSelectedElement] = useState(null);
   const displayElements = getArrayFormat(elements);
-  const gridColumnSize = `repeat(${displayElements.length}, 1fr)`;
 
   const customElementsPositions = new Array(displayElements.length).fill(null);
   for (const customElement of customElements) {
@@ -13,6 +13,10 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
     }
   }
 
+  const handleContextMenu = (index) => {
+    setSelectedElement(index);
+  };
+
   return (
     <div className="flex space-around justify-evenly">
       {displayElements.map((element, index) => (
@@ -20,9 +24,14 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
           <div className="inline-block">{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div
             key={index}
-            className="flex-grow"
+            className={`flex-grow ${
+              selectedElement === index && "bg-green-500 text-white"
+            }`}
             onClick={() => {
               createPoint(index);
+            }}
+            onContextMenu={() => {
+              handleContextMenu(index);
             }}
           >
             {element}
