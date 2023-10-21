@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ArrayVisualized({ elements, customElements, createPoint }) {
+function ArrayVisualized({ elements, customElements, createPoint, selectedPoints }) {
   const [selectedElement, setSelectedElement] = useState(null);
   const displayElements = getArrayFormat(elements);
 
@@ -16,16 +16,26 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
   const handleContextMenu = (index) =>
     setSelectedElement(selectedElement === index ? null : index);
 
+  const evaluateDraw = (currentIndex) => {
+    const dummyPoint = selectedPoints[0];
+    if (currentIndex === dummyPoint.start) {
+      return ">";
+    } else if (currentIndex === dummyPoint.end) {
+      return "<";
+    } else if (currentIndex < dummyPoint.end && currentIndex > dummyPoint.start) {
+      return "-";
+    }
+    return null;
+  };
+
   return (
     <div className="flex space-around justify-evenly">
       {displayElements.map((element, index) => (
-        <div key={index} className="text-center">
-          <div className="inline-block">{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
+        <div key={index} className="flex flex-col text-center">
+          <div>{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div
             key={index}
-            className={`flex-grow ${
-              selectedElement === index && "bg-green-500 text-white"
-            }`}
+            className={`${selectedElement === index && "bg-green-500 text-white"}`}
             onClick={() => {
               handleContextMenu(index);
             }}
@@ -35,10 +45,8 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
           >
             {element}
           </div>
-          <div class="flex justify-center">
-            {customElementsPositions[index]?.map((element) => element.icon)}
-          </div>
-          <div className="flex justify-around">
+          <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
+          <div>
             {customElementsPositions[index]?.map((element) => (
               <span>
                 {element.subscript != 1
@@ -47,6 +55,7 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
               </span>
             ))}
           </div>
+          <div className="text-red-500">{evaluateDraw(index)}</div>
         </div>
       ))}
     </div>

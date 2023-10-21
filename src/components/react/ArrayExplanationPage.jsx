@@ -18,6 +18,9 @@ const ArrayExplanation = () => {
     { letter: "s", subscript: 1 },
     { letter: "t", subscript: 1 },
   ]);
+  const [selectedPoints, setSelectedPoints] = useState([
+    { start: 5, end: 15, text: "aca" },
+  ]);
 
   useEffect(() => {
     setElements(generateRandomArray(20));
@@ -26,9 +29,9 @@ const ArrayExplanation = () => {
   useEffect(() => {
     setCustomElements(() => {
       return [
-        /* { icon: iconsTypes.upArrow, index: 5, value: "p" },
-        { icon: iconsTypes.upArrow, index: 15, value: "q" },
-        { icon: iconsTypes.upArrow, index: 29, value: "r" },*/
+        { icon: iconsTypes.upArrow, index: 5, value: "p", subscript: 1 },
+        { icon: iconsTypes.upArrow, index: 15, value: "q", subscript: 1 },
+        { icon: iconsTypes.upArrow, index: 29, value: "r", subscript: 1 },
       ];
     });
   }, [elements]);
@@ -66,11 +69,6 @@ const ArrayExplanation = () => {
     });
   };
 
-  const handleAddData = (newData) => {
-    // Realiza alguna acción con los datos, por ejemplo, agrega los nuevos datos al array de elementos
-    setElements([...elements, newData]);
-  };
-
   const selectPoint = (newPointLetter) => {
     setNextsPointLetter(() => {
       return newPointLetter;
@@ -84,6 +82,7 @@ const ArrayExplanation = () => {
           elements={elements}
           customElements={customElements}
           createPoint={createPoint}
+          selectedPoints={selectedPoints}
           client:load
         ></ArrayVisualized>
         <div className="flex">
