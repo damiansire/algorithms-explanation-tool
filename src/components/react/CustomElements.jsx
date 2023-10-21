@@ -22,7 +22,9 @@ const CustomElements = ({ customElements, updateValues }) => {
               <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
                 <td class="px-4 py-4">{element.icon}</td>
                 <td class="px-4 py-4">
-                  {element.value}_{element.subscript}
+                  {element.subscript != 1
+                    ? `${element.value}_${element.subscript}`
+                    : element.value}
                 </td>
                 <td class="px-4 py-4">
                   <Counter
