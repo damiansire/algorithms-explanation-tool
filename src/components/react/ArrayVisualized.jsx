@@ -32,7 +32,11 @@ function ArrayVisualized({ elements, customElements, createPoint }) {
           </div>
           <div className="flex justify-around">
             {customElementsPositions[index]?.map((element) => (
-              <span>{element.value}</span>
+              <span>
+                {element.subscript != 1
+                  ? `${element.value}_${element.subscript}`
+                  : element.value}
+              </span>
             ))}
           </div>
         </div>

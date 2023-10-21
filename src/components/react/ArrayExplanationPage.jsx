@@ -12,6 +12,13 @@ const ArrayExplanation = () => {
   const [elements, setElements] = useState([]);
   const [customElements, setCustomElements] = useState([]);
   const [nextsPointLetter, setNextsPointLetter] = useState("q");
+  const [pointOptions, setPointOptions] = useState([
+    { letter: "p", subscript: 1 },
+    { letter: "q", subscript: 1 },
+    { letter: "r", subscript: 1 },
+    { letter: "s", subscript: 1 },
+    { letter: "t", subscript: 1 },
+  ]);
 
   useEffect(() => {
     setElements(generateRandomArray(20));
@@ -39,15 +46,25 @@ const ArrayExplanation = () => {
     });
   };
 
-  const createCustomElement = (index, value) => {
-    const newElement = { icon: iconsTypes.upArrow, index, value };
+  const createCustomElement = (index, value, subscript) => {
+    const newElement = { icon: iconsTypes.upArrow, index, value, subscript };
     setCustomElements((lastState) => {
       return [...lastState, newElement];
     });
   };
 
   const createPoint = (index) => {
-    createCustomElement(index, nextsPointLetter);
+    const subscript = pointOptions.find((point) => point.letter === nextsPointLetter);
+    createCustomElement(index, nextsPointLetter, subscript.subscript);
+    setPointOptions((lastState) => {
+      const newState = [...lastState];
+      const optionIndex = newState.findIndex((option) => {
+        return option.letter === nextsPointLetter;
+      });
+      newState[optionIndex].subscript++;
+
+      return newState;
+    });
   };
 
   const handleAddData = (newData) => {
@@ -83,6 +100,7 @@ const ArrayExplanation = () => {
       </div>
       <div>
         <LetterOptions
+          pointOptions={pointOptions}
           nextsPointLetter={nextsPointLetter}
           selectPoint={selectPoint}
         ></LetterOptions>
