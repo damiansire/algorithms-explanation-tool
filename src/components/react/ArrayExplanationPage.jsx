@@ -11,6 +11,7 @@ const iconsTypes = {
 const ArrayExplanation = () => {
   const [elements, setElements] = useState([]);
   const [customElements, setCustomElements] = useState([]);
+  const [nextsPointLetter, setNextsPointLetter] = useState("q");
 
   useEffect(() => {
     setElements(generateRandomArray(20));
@@ -19,9 +20,9 @@ const ArrayExplanation = () => {
   useEffect(() => {
     setCustomElements(() => {
       return [
-        { icon: iconsTypes.upArrow, index: 5, value: "p" },
-        { icon: iconsTypes.upArrow, index: 5, value: "q" },
-        { icon: iconsTypes.upArrow, index: 29, value: "r" },
+        /* { icon: iconsTypes.upArrow, index: 5, value: "p" },
+        { icon: iconsTypes.upArrow, index: 15, value: "q" },
+        { icon: iconsTypes.upArrow, index: 29, value: "r" },*/
       ];
     });
   }, [elements]);
@@ -38,9 +39,26 @@ const ArrayExplanation = () => {
     });
   };
 
+  const createCustomElement = (index, value) => {
+    const newElement = { icon: iconsTypes.upArrow, index, value };
+    setCustomElements((lastState) => {
+      return [...lastState, newElement];
+    });
+  };
+
+  const createPoint = (index) => {
+    createCustomElement(index, nextsPointLetter);
+  };
+
   const handleAddData = (newData) => {
     // Realiza alguna acción con los datos, por ejemplo, agrega los nuevos datos al array de elementos
     setElements([...elements, newData]);
+  };
+
+  const selectPoint = (newPointLetter) => {
+    setNextsPointLetter(() => {
+      return newPointLetter;
+    });
   };
 
   return (
@@ -49,6 +67,7 @@ const ArrayExplanation = () => {
         <ArrayVisualized
           elements={elements}
           customElements={customElements}
+          createPoint={createPoint}
           client:load
         ></ArrayVisualized>
         <div className="flex">
@@ -63,7 +82,10 @@ const ArrayExplanation = () => {
         </div>
       </div>
       <div>
-        <LetterOptions></LetterOptions>
+        <LetterOptions
+          nextsPointLetter={nextsPointLetter}
+          selectPoint={selectPoint}
+        ></LetterOptions>
       </div>
     </section>
   );
