@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ArrayVisualized from "./ArrayVisualized";
-import FormControl from "./FormControl";
 import CustomElements from "./CustomElements";
 import { BsArrowUp } from "react-icons/bs";
 import LetterOptions from "./LetterOptions";
@@ -88,10 +87,6 @@ const ArrayExplanation = () => {
           client:load
         ></ArrayVisualized>
         <div className="flex">
-          <FormControl
-            onAddData={handleAddData}
-            customElements={customElements}
-          ></FormControl>
           <CustomElements
             customElements={customElements}
             updateValues={updateCustomElementsValues}
