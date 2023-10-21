@@ -28,10 +28,19 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
     return null;
   };
 
+  const columnStyle = {
+    display: "grid",
+    gridTemplateColumns: `repeat(${displayElements.length}, 1fr)`,
+    gridTemplateRows: "repeat(5, 1fr)",
+    gridRowGap: "1rem",
+    gridColumnGap: "1rem",
+    gridAutoFlow: "column",
+  };
+
   return (
-    <div className="flex space-around justify-evenly">
+    <div className={` grid-rows-5 gap-4`} style={columnStyle}>
       {displayElements.map((element, index) => (
-        <div key={index} className="flex flex-col text-center">
+        <>
           <div>{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div
             key={index}
@@ -56,7 +65,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
             ))}
           </div>
           <div className="text-red-500">{evaluateDraw(index)}</div>
-        </div>
+        </>
       ))}
     </div>
   );
