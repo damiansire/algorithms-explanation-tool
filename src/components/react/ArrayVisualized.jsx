@@ -3,6 +3,7 @@ import "./ArrayVisualized.css";
 function ArrayVisualized({ elements, customElements, createPoint, selectedPoints }) {
   const [selectedElement, setSelectedElement] = useState(null);
   const displayElements = getArrayFormat(elements);
+  const showArrayStructure = false;
 
   const customElementsPositions = new Array(displayElements.length).fill(null);
   for (const customElement of customElements) {
@@ -31,42 +32,52 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
   const columnStyle = {
     display: "grid",
     gridTemplateColumns: `repeat(${displayElements.length}, 1fr)`,
-    gridTemplateRows: "repeat(5, 1fr)",
+    gridTemplateRows: "repeat(4, 1fr)",
     gridRowGap: "1rem",
     gridColumnGap: "1rem",
     gridAutoFlow: "column",
   };
 
   return (
-    <div className={` grid-rows-5 gap-4`} style={columnStyle}>
-      {displayElements.map((element, index) => (
-        <>
-          <div>{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
-          <div
-            key={index}
-            className={`cell ${selectedElement === index && "selected"}`}
-            onClick={() => {
-              handleContextMenu(index);
-            }}
-            onContextMenu={() => {
-              createPoint(index);
-            }}
-          >
-            <span>{element}</span>
-          </div>
-          <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
-          <div>
-            {customElementsPositions[index]?.map((element) => (
-              <span>
-                {element.subscript != 1
-                  ? `${element.value}_${element.subscript}`
-                  : element.value}
+    <div style={columnStyle}>
+      {displayElements.map((element, index) => {
+        let elementIndex;
+        if (showArrayStructure) {
+          elementIndex = index % 2 === 1 ? (index - 1) / 2 : "";
+        } else {
+          elementIndex = index;
+        }
+        return (
+          <>
+            <div
+              key={index}
+              className={`cell ${selectedElement === index && "selected"} relative`}
+              onClick={() => {
+                handleContextMenu(index);
+              }}
+              onContextMenu={() => {
+                createPoint(index);
+              }}
+            >
+              <span>{element}</span>
+              <span class="absolute bottom-0 right-0 text-base array-index">
+                {elementIndex}
               </span>
-            ))}
-          </div>
-          <div className="text-red-500">{evaluateDraw(index)}</div>
-        </>
-      ))}
+            </div>
+            <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
+            <div>
+              {customElementsPositions[index]?.map((element) => (
+                <span>
+                  {element.subscript != 1
+                    ? `${element.value}_${element.subscript}`
+                    : element.value}
+                </span>
+              ))}
+            </div>
+            <div className="text-red-500">{evaluateDraw(index)}</div>
+          </>
+        );
+      })}
     </div>
   );
 }

@@ -19,7 +19,7 @@ const ArrayExplanation = () => {
     { letter: "t", subscript: 1 },
   ]);
   const [selectedPoints, setSelectedPoints] = useState([
-    { start: 3, end: 7, text: "aca" },
+    { start: 3, end: 6, text: "aca" },
   ]);
 
   useEffect(() => {

@@ -15,3 +15,9 @@
   border-color: #9cec5b;
   color: white;
 }
+
+.array-index {
+  width: 1.4rem;
+  border: 1px solid red;
+  text-align: center;
+}
