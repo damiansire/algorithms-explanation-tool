@@ -66,7 +66,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
               </span>
             </div>
             <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
-            <div>
+            <div class="flex flex-wrap gap-4">
               {customElementsPositions[index]?.map((element) => (
                 <div>
                   {element.subscript != 1 ? (
