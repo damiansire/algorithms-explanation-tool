@@ -44,7 +44,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
           <div>{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div
             key={index}
-            className={`cell ${selectedElement === index && "bg-green-500 text-white"}`}
+            className={`cell ${selectedElement === index && "selected"}`}
             onClick={() => {
               handleContextMenu(index);
             }}

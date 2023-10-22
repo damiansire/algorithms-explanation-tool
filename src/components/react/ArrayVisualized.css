@@ -9,3 +9,9 @@
   border-radius: 5px;
   width: fit-content;
 }
+
+.cell.selected {
+  background-color: #9cec5b;
+  border-color: #9cec5b;
+  color: white;
+}
