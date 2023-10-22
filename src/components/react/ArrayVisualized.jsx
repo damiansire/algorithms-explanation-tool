@@ -33,7 +33,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
   const columnStyle = {
     display: "grid",
     gridTemplateColumns: `repeat(${displayElements.length}, 1fr)`,
-    gridTemplateRows: "repeat(4, 1fr)",
+    gridTemplateRows: "repeat(4, auto)",
     gridRowGap: "1rem",
     gridColumnGap: "1rem",
     gridAutoFlow: "column",
