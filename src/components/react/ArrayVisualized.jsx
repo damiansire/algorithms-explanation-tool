@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./ArrayVisualized.css";
 function ArrayVisualized({ elements, customElements, createPoint, selectedPoints }) {
   const [selectedElement, setSelectedElement] = useState(null);
   const displayElements = getArrayFormat(elements);
@@ -44,7 +44,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
           <div>{index % 2 === 1 ? (index - 1) / 2 : ""}</div>
           <div
             key={index}
-            className={`${selectedElement === index && "bg-green-500 text-white"}`}
+            className={`cell ${selectedElement === index && "bg-green-500 text-white"}`}
             onClick={() => {
               handleContextMenu(index);
             }}
@@ -52,7 +52,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
               createPoint(index);
             }}
           >
-            {element}
+            <span>{element}</span>
           </div>
           <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
           <div>
@@ -76,9 +76,9 @@ function getArrayFormat(elements) {
   displayElements.push("[");
   for (let index = 0; index < elements.length; index++) {
     displayElements.push(elements[index]);
-    if (index < elements.length - 1) {
+    /*if (index < elements.length - 1) {
       displayElements.push(",");
-    }
+    }*/
   }
   displayElements.push("]");
   return displayElements;

@@ -19,19 +19,19 @@ const ArrayExplanation = () => {
     { letter: "t", subscript: 1 },
   ]);
   const [selectedPoints, setSelectedPoints] = useState([
-    { start: 5, end: 15, text: "aca" },
+    { start: 3, end: 7, text: "aca" },
   ]);
 
   useEffect(() => {
-    setElements(generateRandomArray(20));
+    setElements(generateRandomArray(7));
   }, []);
 
   useEffect(() => {
     setCustomElements(() => {
       return [
-        { icon: iconsTypes.upArrow, index: 5, value: "p", subscript: 1 },
-        { icon: iconsTypes.upArrow, index: 15, value: "q", subscript: 1 },
-        { icon: iconsTypes.upArrow, index: 29, value: "r", subscript: 1 },
+        { icon: iconsTypes.upArrow, index: 3, value: "p", subscript: 1 },
+        { icon: iconsTypes.upArrow, index: 7, value: "q", subscript: 1 },
+        { icon: iconsTypes.upArrow, index: 11, value: "r", subscript: 1 },
       ];
     });
   }, [elements]);

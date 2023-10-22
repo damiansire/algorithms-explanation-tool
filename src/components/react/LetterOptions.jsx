@@ -9,8 +9,8 @@ const LetterOptions = ({ pointOptions, nextsPointLetter, selectPoint }) => {
     <form>
       <div className="px-2 min-h-screen flex justify-center items-center">
         <div className="mb-2">
-          <div class="flex flex-col">
-            <label for="text" class="mb-2 font-semibold">
+          <div className="flex flex-col">
+            <label for="text" className="mb-2 font-semibold">
               Next Point
             </label>
           </div>
@@ -21,7 +21,7 @@ const LetterOptions = ({ pointOptions, nextsPointLetter, selectPoint }) => {
                   type="text"
                   onChange={(e) => setPunto(e.target.value)}
                   id="text"
-                  class="w-full max-w-lg rounded-lg border border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
+                  className="w-full max-w-lg rounded-lg border border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
                 />
               </div>
               {pointOptions.map((option) => (
