@@ -73,14 +73,14 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
 
 function getArrayFormat(elements) {
   let displayElements = [];
-  displayElements.push("[");
+  //displayElements.push("[");
   for (let index = 0; index < elements.length; index++) {
     displayElements.push(elements[index]);
     /*if (index < elements.length - 1) {
       displayElements.push(",");
     }*/
   }
-  displayElements.push("]");
+  //displayElements.push("]");
   return displayElements;
 }
 

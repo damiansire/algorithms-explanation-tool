@@ -107,7 +107,7 @@ const generateRandomArray = (length) => {
   const array = [];
 
   for (let i = 0; i < length; i++) {
-    const randomElement = Math.floor(Math.random() * 10); // You can adjust the range and values as needed.
+    const randomElement = Math.floor(Math.random() * 100); // You can adjust the range and values as needed.
     array.push(randomElement);
   }
 
