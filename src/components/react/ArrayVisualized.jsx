@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NumberWithIndex from "./dummy-components/NumberWithIndex";
 import "./ArrayVisualized.css";
 function ArrayVisualized({ elements, customElements, createPoint, selectedPoints }) {
   const [selectedElement, setSelectedElement] = useState(null);
@@ -67,11 +68,16 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
             <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
             <div>
               {customElementsPositions[index]?.map((element) => (
-                <span>
-                  {element.subscript != 1
-                    ? `${element.value}_${element.subscript}`
-                    : element.value}
-                </span>
+                <div>
+                  {element.subscript != 1 ? (
+                    <NumberWithIndex
+                      number={element.value}
+                      subIndex={element.subscript}
+                    ></NumberWithIndex>
+                  ) : (
+                    element.value
+                  )}
+                </div>
               ))}
             </div>
             <div className="text-red-500">{evaluateDraw(index)}</div>
