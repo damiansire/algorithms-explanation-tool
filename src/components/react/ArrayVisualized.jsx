@@ -65,7 +65,18 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
                 {elementIndex}
               </span>
             </div>
-            <div>{customElementsPositions[index]?.map((element) => element.icon)}</div>
+            <div>
+              {
+                <div>
+                  {customElementsPositions[index]
+                    ?.filter((element, index, array) => {
+                      // Only show unique icon
+                      return array.findIndex((e) => e.icon === element.icon) === index;
+                    })
+                    .map((element) => element.icon)}
+                </div>
+              }
+            </div>
             <div class="flex flex-wrap gap-4">
               {customElementsPositions[index]?.map((element) => (
                 <div>
