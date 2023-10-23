@@ -3,6 +3,8 @@ import ArrayVisualized from "./ArrayVisualized";
 import CustomElements from "./CustomElements";
 import { BsArrowUp } from "react-icons/bs";
 import LetterOptions from "./LetterOptions";
+import AddNewElementForm from "./dummy-components/AddNewElementForm";
+
 const iconsTypes = {
   upArrow: <BsArrowUp />,
 };
@@ -77,6 +79,20 @@ const ArrayExplanation = () => {
     });
   };
 
+  const addNewNumber = (numberType, customNumber) => {
+    let newNumber = null;
+    if (numberType === "random") {
+      newNumber = generateRandomNumber();
+    } else if (numberType === "custom") {
+      newNumber = customNumber;
+    }
+    setElements((lastState) => {
+      const newState = lastState.slice();
+      newState.push(newNumber);
+      return newState;
+    });
+  };
+
   return (
     <section className="flex">
       <div>
@@ -101,15 +117,22 @@ const ArrayExplanation = () => {
           selectPoint={selectPoint}
         ></LetterOptions>
       </div>
+      <div>
+        <AddNewElementForm addNewNumber={addNewNumber}></AddNewElementForm>
+      </div>
     </section>
   );
+};
+
+const generateRandomNumber = () => {
+  return Math.floor(Math.random() * 100);
 };
 
 const generateRandomArray = (length) => {
   const array = [];
 
   for (let i = 0; i < length; i++) {
-    const randomElement = Math.floor(Math.random() * 100); // You can adjust the range and values as needed.
+    const randomElement = generateRandomNumber();
     array.push(randomElement);
   }
 
