@@ -7,7 +7,7 @@
   color: #222;
   border: 5px solid #eee;
   border-radius: 5px;
-  width: fit-content;
+  text-align: center;
 }
 
 .cell.selected {
