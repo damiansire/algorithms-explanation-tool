@@ -67,7 +67,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
             </div>
             <div>
               {
-                <div>
+                <div className="flex justify-center">
                   {customElementsPositions[index]
                     ?.filter((element, index, array) => {
                       // Only show unique icon
@@ -77,7 +77,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
                 </div>
               }
             </div>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex justify-center flex-wrap gap-4">
               {customElementsPositions[index]?.map((element) => (
                 <div>
                   {element.subscript != 1 ? (
