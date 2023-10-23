@@ -40,7 +40,7 @@ function ArrayVisualized({ elements, customElements, createPoint, selectedPoints
   };
 
   return (
-    <div style={columnStyle}>
+    <div style={columnStyle} className="select-none">
       {displayElements.map((element, index) => {
         let elementIndex;
         if (showArrayStructure) {
