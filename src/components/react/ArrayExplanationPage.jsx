@@ -79,7 +79,7 @@ const ArrayExplanation = () => {
 
   return (
     <section className="flex">
-      <div className="flex-grow">
+      <div>
         <ArrayVisualized
           elements={elements}
           customElements={customElements}
