@@ -94,8 +94,14 @@ const ArrayExplanation = () => {
   };
 
   return (
-    <section className="flex">
-      <div>
+    <section className="flex p-4">
+      <div className="flex">
+        <CustomElements
+          customElements={customElements}
+          updateValues={updateCustomElementsValues}
+        ></CustomElements>
+      </div>
+      <div className="flex-grow px-4">
         <ArrayVisualized
           elements={elements}
           customElements={customElements}
@@ -103,12 +109,6 @@ const ArrayExplanation = () => {
           selectedPoints={selectedPoints}
           client:load
         ></ArrayVisualized>
-        <div className="flex">
-          <CustomElements
-            customElements={customElements}
-            updateValues={updateCustomElementsValues}
-          ></CustomElements>
-        </div>
       </div>
       <div>
         <LetterOptions
@@ -116,8 +116,6 @@ const ArrayExplanation = () => {
           nextsPointLetter={nextsPointLetter}
           selectPoint={selectPoint}
         ></LetterOptions>
-      </div>
-      <div>
         <AddNewElementForm addNewNumber={addNewNumber}></AddNewElementForm>
       </div>
     </section>
