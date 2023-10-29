@@ -3,8 +3,7 @@ import Counter from "./Counter";
 
 const CustomElements = ({ customElements, updateValues }) => {
   const setNewValue = (element, newValue) => {
-    const newIndex = newValue * 2 + 1;
-    updateValues(element, { index: newIndex });
+    updateValues(element, { index: newValue });
   };
   return (
     <div>
@@ -28,7 +27,7 @@ const CustomElements = ({ customElements, updateValues }) => {
                 </td>
                 <td className="px-4 py-4">
                   <Counter
-                    count={(element.index - 1) / 2}
+                    count={element.index}
                     setNewValue={(newValue) => {
                       setNewValue(element, newValue);
                     }}
