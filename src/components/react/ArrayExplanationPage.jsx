@@ -31,11 +31,13 @@ const ArrayExplanation = () => {
   useEffect(() => {
     setCustomElements(() => {
       return [
+        /*
         { icon: iconsTypes.upArrow, index: 3, value: "p", subscript: 1 },
         { icon: iconsTypes.upArrow, index: 4, value: "p", subscript: 2 },
         { icon: iconsTypes.upArrow, index: 5, value: "p", subscript: 3 },
         { icon: iconsTypes.upArrow, index: 1, value: "q", subscript: 1 },
         { icon: iconsTypes.upArrow, index: 2, value: "r", subscript: 1 },
+        */
       ];
     });
   }, [elements]);
