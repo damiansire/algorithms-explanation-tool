@@ -4,6 +4,7 @@ import CustomElements from "./CustomElements";
 import { BsArrowUp } from "react-icons/bs";
 import LetterOptions from "./LetterOptions";
 import AddNewElementForm from "./dummy-components/AddNewElementForm";
+import { generateRandomNumber, generateRandomArray } from "../../libs/random";
 
 const iconsTypes = {
   upArrow: <BsArrowUp />,
@@ -122,21 +123,6 @@ const ArrayExplanation = () => {
       </div>
     </section>
   );
-};
-
-const generateRandomNumber = () => {
-  return Math.floor(Math.random() * 100);
-};
-
-const generateRandomArray = (length) => {
-  const array = [];
-
-  for (let i = 0; i < length; i++) {
-    const randomElement = generateRandomNumber();
-    array.push(randomElement);
-  }
-
-  return array;
 };
 
 export default ArrayExplanation;
