@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OptionButton from "./dummy-components/OptionButton";
 
-const LetterOptions = ({ pointOptions, nextsPointLetter, selectPoint }) => {
+const LetterOptions = ({ pointOptions, selectedPointLetter, selectPoint }) => {
   const [isCustomName, setIsCustomName] = useState(false);
   const handleOptionChange = (option) => {
     selectPoint(option);
@@ -15,6 +15,8 @@ const LetterOptions = ({ pointOptions, nextsPointLetter, selectPoint }) => {
     selectPoint(option);
   };
 
+  const plusOption = { letter: "+", subscript: 1 };
+
   return (
     <form>
       <div className="flex flex-col px-2 mb-2">
@@ -24,13 +26,13 @@ const LetterOptions = ({ pointOptions, nextsPointLetter, selectPoint }) => {
             {pointOptions.map((option) => (
               <OptionButton
                 option={option}
-                nextsPointLetter={nextsPointLetter}
+                isSelected={selectedPointLetter === option.letter}
                 handleOptionChange={handleOptionChange}
               ></OptionButton>
             ))}
             <OptionButton
-              option={{ letter: "+", subscript: 1 }}
-              nextsPointLetter={nextsPointLetter}
+              option={plusOption}
+              isSelected={selectedPointLetter === plusOption.letter}
               handleOptionChange={setCustomName}
             ></OptionButton>
           </div>

@@ -13,7 +13,7 @@ const iconsTypes = {
 const ArrayExplanation = () => {
   const [elements, setElements] = useState([]);
   const [customElements, setCustomElements] = useState([]);
-  const [nextsPointLetter, setNextsPointLetter] = useState("q");
+  const [selectedPointLetter, setSelectedPointLetter] = useState("q");
   const [pointOptions, setPointOptions] = useState([
     { letter: "p", subscript: 1 },
     { letter: "q", subscript: 1 },
@@ -63,12 +63,12 @@ const ArrayExplanation = () => {
   };
 
   const createPoint = (index) => {
-    const subscript = pointOptions.find((point) => point.letter === nextsPointLetter);
-    createCustomElement(index, nextsPointLetter, subscript.subscript);
+    const subscript = pointOptions.find((point) => point.letter === selectedPointLetter);
+    createCustomElement(index, selectedPointLetter, subscript.subscript);
     setPointOptions((lastState) => {
       const newState = [...lastState];
       const optionIndex = newState.findIndex((option) => {
-        return option.letter === nextsPointLetter;
+        return option.letter === selectedPointLetter;
       });
       newState[optionIndex].subscript++;
 
@@ -77,7 +77,7 @@ const ArrayExplanation = () => {
   };
 
   const selectPoint = (newPointLetter) => {
-    setNextsPointLetter(() => {
+    setSelectedPointLetter(() => {
       return newPointLetter;
     });
   };
@@ -116,7 +116,7 @@ const ArrayExplanation = () => {
       <div>
         <LetterOptions
           pointOptions={pointOptions}
-          nextsPointLetter={nextsPointLetter}
+          selectedPointLetter={selectedPointLetter}
           selectPoint={selectPoint}
         ></LetterOptions>
         <AddNewElementForm addNewNumber={addNewNumber}></AddNewElementForm>
