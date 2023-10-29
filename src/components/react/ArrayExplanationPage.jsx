@@ -76,6 +76,16 @@ const ArrayExplanation = () => {
     });
   };
 
+  const createNewPointOption = (text) => {
+    debugger;
+    setPointOptions((options) => {
+      const newOptions = [...options];
+      newOptions.push({ letter: text, subscript: 1 });
+      debugger;
+      return newOptions;
+    });
+  };
+
   const selectPoint = (newPointLetter) => {
     setSelectedPointLetter(() => {
       return newPointLetter;
@@ -118,6 +128,7 @@ const ArrayExplanation = () => {
           pointOptions={pointOptions}
           selectedPointLetter={selectedPointLetter}
           selectPoint={selectPoint}
+          createNewPointOption={createNewPointOption}
         ></LetterOptions>
         <AddNewElementForm addNewNumber={addNewNumber}></AddNewElementForm>
       </div>
