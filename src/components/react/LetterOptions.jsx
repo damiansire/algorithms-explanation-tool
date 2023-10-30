@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import OptionButton from "./dummy-components/OptionButton";
 
 const LetterOptions = ({
@@ -32,6 +32,12 @@ const LetterOptions = ({
   const createCustomPoint = (text) => {
     createNewPointOption(text);
   };
+
+  useEffect(() => {
+    if (isCustomName) {
+      inputRef.current.focus();
+    }
+  }, [isCustomName]);
 
   const plusOption = { letter: "+", subscript: 1 };
 
